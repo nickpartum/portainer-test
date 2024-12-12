@@ -6,6 +6,15 @@ volumes:
     driver: local
 
 services:
+  api:
+    build: ./api
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - postgres
+      -
   postgres:
     image: postgres
     restart: always
