@@ -3,11 +3,14 @@
   "version": "1.0.0",
   "main": "src/index.js",
   "scripts": {
-    "build": "prisma generate && prisma migrate deploy",
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
     "docker": "npm run build & npm run start",
-    "prisma:studio": "npx prisma studio"
+    "prisma:studio": "npx prisma studio",
+    "prisma:format": "npx prisma format",
+    "prisma:generate": "npx prisma generate",
+    "prisma:migrate": "npx prisma migrate up",
+    "prisma:deploy": "npx prisma migrate deploy"
   },
   "author": "",
   "license": "ISC",
