@@ -1,0 +1,23 @@
+networks:
+  default:
+
+volumes:
+  db:
+    driver: local
+
+services:
+  postgres:
+    image: postgres
+    restart: always
+    shm_size: 128mb
+    environment:
+      - TZ=GMT+2
+      - POSTGRES_DB=mydb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - db:/var/lib/postgresql/data
+    networks:
+      - default
