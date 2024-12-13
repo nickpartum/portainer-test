@@ -5,8 +5,8 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
-  output   = "../src/db/build"
+  provider      = "prisma-client-js"
+  output        = "../src/db/build"
   binaryTargets = ["native", "linux-musl"]
 }
 
