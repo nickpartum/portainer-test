@@ -14,27 +14,18 @@ services:
     environment:
       - NODE_ENV=production
       - PORT=3000
-      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/mydb?schema=public
-      - PRISMA_QUERY_ENGINE_BINARY=src/prisma/engine/query-engine
-      - PRISMA_QUERY_ENGINE_LIBRARY=src/prisma/engine/libquery_engine.so.node
-      - PRISMA_SCHEMA_ENGINE_BINARY=src/prisma/engine/schema-engine
+      - MONGO_URI=mongodb://localhost/mydb
     depends_on:
-      - postgres
+      - mongo
     networks:
       - default
 
-  postgres:
-    image: postgres
+  mongo:
+    image: mongo
     restart: always
-    shm_size: 128mb
-    environment:
-      - TZ=GMT+2
-      - POSTGRES_DB=mydb
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
     ports:
-      - "5432:5432"
+      - "27017:27017"
     volumes:
-      - db:/var/lib/postgresql/data
+      - db:/data/db
     networks:
       - default
