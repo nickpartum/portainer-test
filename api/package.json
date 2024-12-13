@@ -5,6 +5,8 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
+    "db:migrate": "npx sequelize-cli db:migrate",
+    "db:seed:all": "npx sequelize-cli db:seed:all",
     "docker": "npm run start"
   },
   "author": "",
@@ -19,6 +21,7 @@
     "sequelize": "^6.37.5"
   },
   "devDependencies": {
-    "nodemon": "^3.1.7"
+    "nodemon": "^3.1.7",
+    "sequelize-cli": "^6.6.2"
   }
 }
