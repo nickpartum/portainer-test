@@ -5,8 +5,6 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
-    "db:migrate": "npx knex migrate:latest",
-    "db:seed": "npx knex seed:run",
     "docker": "npm run start"
   },
   "author": "",
