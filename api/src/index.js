@@ -1,23 +1,17 @@
-import dotenv from "dotenv";
-import expressService from "./services/express.service";
-import sequelizeService from "./services/sequelize.service";
-import awsService from "./services/aws.service";
-dotenv.config();
+require('dotenv').config();
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const router = require("./routes");
 
-const services = [
-    expressService,
-  // awsService,
-  sequelizeService];
+const PORT = process.env.PORT || 3000;
+const app = express();
 
-(async () => {
-  try {
-    for (const service of services) {
-      await service.init();
-    }
-    console.log("Server initialized.");
-    //PUT ADITIONAL CODE HERE.
-  } catch (error) {
-    console.log(error);
-    process.exit(1);
-  }
-})();
+app.use(bodyParser.json());
+app.use(cors());
+
+app.use('/api/v1', router);
+
+app.listen(PORT, async () => {
+    console.log(`Server is running on port ${PORT}`);
+});
