@@ -12,9 +12,12 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=production
-      - DATABASE_URL=postgresql://postgres:postgres@localhost:5432/mydb?schema=public
+      - PORT=3000
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/mydb?schema=public
     depends_on:
       - postgres
+    networks:
+      - default
 
   postgres:
     image: postgres
@@ -26,7 +29,7 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     ports:
-      - 5432:5432
+      - "5432:5432"
     volumes:
       - db:/var/lib/postgresql/data
     networks:
