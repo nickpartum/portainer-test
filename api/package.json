@@ -12,7 +12,8 @@
     "prisma:migrate:reset": "prisma migrate reset",
     "prisma:migrate:deploy": "prisma migrate deploy",
     "prisma:studio": "npx prisma studio",
-    "docker": "npm run prisma:generate & npm run prisma:migrate:deploy & npm run start"
+    "docker": "npm run prisma:generate",
+    "docker1": "npm run prisma:generate & npm run prisma:migrate:deploy & npm run start"
   },
   "prisma": {
     "schema": "src/prisma/schema.prisma",
