@@ -4,7 +4,7 @@ const {Sequelize} = require("sequelize");
 const app = express();
 const port = 3000
 
-const sequelize = new Sequelize("postgresql://postgres:postgres@localhost:5432/mydb?schema=public") // Example for postgres
+const sequelize = new Sequelize(process.env.DATABASE_URL) // Example for postgres
 
 app.get("/", function(req, res) {
     return res.send("Hello World");
