@@ -1,8 +1,10 @@
 const express = require("express");
-const {connectToDB} = require("./db");
+const {Sequelize} = require("sequelize");
 
 const app = express();
 const port = 3000
+
+const sequelize = new Sequelize("postgresql://postgres:postgres@localhost:5432/mydb?schema=public") // Example for postgres
 
 app.get("/", function(req, res) {
     return res.send("Hello World");
@@ -15,10 +17,12 @@ app.get("/", function(req, res) {
             console.log(`API listening on port ${port}`)
         })
 
-        await connectToDB();
+        await sequelize.authenticate();
+        console.log('Connection has been established successfully.');
 
-    } catch (err) {
-        console.error(err);
+    } catch (error) {
+        console.error('Unable to connect to the database:', error);
+
         process.exit(1);
     }
 })()
