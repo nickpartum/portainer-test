@@ -1,8 +1,9 @@
-import { PrismaClient } from "./build"
+const  { PrismaClient } = require('./build');
 
-export const db = new PrismaClient()
 
-export async function connectToDB() {
+const db = new PrismaClient()
+
+async function connectToDB() {
     try {
         await db.$connect();
         console.log("[database]: connected!");
@@ -11,3 +12,5 @@ export async function connectToDB() {
         await db.$disconnect();
     }
 }
+
+module.exports = {db, connectToDB};
